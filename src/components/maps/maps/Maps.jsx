@@ -14,7 +14,7 @@ import LeafletRoutingMachine from "../LeafletRoutingMachine";
 const VIsite = () => {
   const position = [-21.43772, 47.09989];
   return (
-    <div className="w-full h-screen overflow-hidden z-0">
+    <div className="z-0 w-full h-screen overflow-hidden">
       <MapContainer
         center={position}
         zoom={13}
