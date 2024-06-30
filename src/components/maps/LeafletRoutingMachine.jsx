@@ -27,7 +27,7 @@ const LeafletRoutingMachine = () => {
     var marker1 = L.marker([lat, lng], {
       icon: DefaultIcon,
     }).addTo(map);
-    map.on("click", function (e) {
+    /* map.on("click", function (e) {
       // L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
       L.Routing.control({
         waypoints: [L.latLng(lat, lng), L.latLng(-21.43772, 47.09989)],
@@ -48,7 +48,7 @@ const LeafletRoutingMachine = () => {
         showAlternatives: true,
       })
         .addTo(map);
-    });
+    }); */
   }, [lat, lng]);
   return null;
 };

@@ -8,11 +8,11 @@ const Home = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const navigate = useNavigate();
 
-    useEffect(() => {
+   /*  useEffect(() => {
         if (!user) {
-            navigate('/unauthorized');
+            navigate('/unhautorized');
         } else if (user.type !== "admin" && user.type !== "client") {
-            navigate('/unauthorized');
+            navigate('/unhautorized');
         }
     }, [navigate, user]);
     if (!user) {
@@ -23,9 +23,9 @@ const Home = () => {
         return <Admin />
     } else if (user.type === "client") {
         return <Client />
-    }
+    } */
 
-    return null;
+    return <Client />;
 }
 
 export default Home;

@@ -11,7 +11,7 @@ import {
 import LeafletRoutingMachine from "../LeafletRoutingMachine";
 
 
-const VIsite = () => {
+const Visite = () => {
   const position = [-21.43772, 47.09989];
   return (
     <div className="z-0 w-full h-screen overflow-hidden">
@@ -19,7 +19,7 @@ const VIsite = () => {
         center={position}
         zoom={13}
         scrollWheelZoom={false}
-        style={{ minHeight: "100vh", minWidth: "100vw" }}
+        style={{ minHeight: "100vh", minWidth: "100vw", zIndex: 0 }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -37,7 +37,7 @@ const VIsite = () => {
   );
 };
 
-export default VIsite;
+export default Visite;
 
 let DefaultIcon = L.icon({
   iconUrl: "/marker-icon.png",
