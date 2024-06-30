@@ -56,9 +56,9 @@ function SlideChangeHooks() {
                 <h3 className="font-bold text-white">{el.name}</h3>
                 <p className="text-gray-400">{el.type}</p>
                 <p className="text-gray-400">Lat: {el.coordinates.lat}, Lng: {el.coordinates.lng}</p>
-                <div className=" flex justify-center space-x-4">
+                <div className=" flex justify-center space-x-4 px-2">
                   <button className="px-4 py-2 text-white rounded-3xl   transition-colors duration-200 bg-blue-500  hover:bg-blue-700">Afficher le Chemin</button>
-                  <button className="px-4 py-2 text-white rounded-3xl  transition-colors duration-200 bg-green-500  hover:bg-green-700">Call</button>
+                  <button className="px-4 py-2 text-white rounded-3xl  transition-colors duration-200 bg-green-500  hover:bg-green-700">Voir</button>
                   <button className="px-4 py-2 text-white rounded-3xl transition-colors duration-200 bg-gray-400  hover:bg-gray-500">Partager</button>
                 </div>
               </div>

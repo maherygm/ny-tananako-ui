@@ -12,12 +12,12 @@ const Main = () => {
             }}>
                 <header className="flex items-center justify-between w-full px-10 py-5 bg-transparent">
                     <div className="flex items-center justify-center gap-4 font-bold text-white text4-lg"><FaMapSigns /><p>Ny Tananako</p></div>
-                    <nav className="space-x-6">
+                    <nav className="space-x-2 md:space-x-6">
                         <NavLink to={"/login"}><a href="#home" className="text-white">Connection</a></NavLink>
                         <NavLink to={"/signUp"}><a href="#home" className="text-white">Inscription</a></NavLink>
                     </nav>
                 </header>
-                <main className="flex flex-col items-center justify-center flex-1">
+                <main className="flex flex-col items-center justify-center flex-1 px-1">
                     <h1 className="mb-4 text-4xl font-bold text-center text-white">Bienvenue sur la Carte de Transport</h1>
                     <p className="mb-6 text-white">Abstract Background</p>
                     <p className="max-w-lg mb-10 text-center text-white">

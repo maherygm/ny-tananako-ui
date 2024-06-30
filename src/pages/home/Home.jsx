@@ -25,7 +25,7 @@ const Home = () => {
         return <Client />
     } */
 
-    return <Client />;
+    return <Admin />;
 }
 
 export default Home;
