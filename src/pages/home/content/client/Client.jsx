@@ -4,6 +4,7 @@ import Section from "./section/Section"
 
 
 const Client = () => {
+
     return (
         <div className="relative h-screen overflow-hidden">
             <Header />

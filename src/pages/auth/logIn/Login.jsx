@@ -1,7 +1,68 @@
-import { NavLink } from "react-router-dom"
+import { useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { NavLink, useNavigate } from "react-router-dom";
+import { toastMessage } from "../../../hooks/useToaster";
+import { checkLogin } from "../../../services/loginService";
+
 
 
 const Login = () => {
+
+    const [username, setUserName] = useState();
+    const [password, setPassWord] = useState();
+
+
+    const [isUserNameValid, setIsUserNameValid] = useState(true);
+    const [isPasswordValid, setIsPasswordValid] = useState(true);
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const navigate = useNavigate();
+
+
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        //hecking form is valid 
+        checkForm();
+
+        //checklogin
+        const isLoggedinPromise = checkLogin(username, password);
+
+        isLoggedinPromise.then((loged) => {
+
+            if (loged.isLogedIn) {
+                localStorage.setItem('user', JSON.stringify(loged.user));
+                toastMessage("vous etes connecter", "success");
+                setIsLoading(false);
+                navigate('/home');
+            } else {
+                toastMessage("erreur veuillez reessayer", "error");
+                setIsLoading(false);
+            }
+        })
+    }
+
+    function checkForm() {
+
+        let valid = true;
+        setIsLoading(true)
+
+        if (username === "") {
+            setIsLoading(false);
+            setIsUserNameValid(false);
+            valid = false;
+        }
+        if (password === "") {
+            setIsLoading(false);
+            setIsPasswordValid(false);
+            valid = false;
+        }
+
+        return valid
+    }
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="w-full max-w-md">
@@ -15,8 +76,18 @@ const Login = () => {
                             id="username"
                             type="text"
                             placeholder="Username"
-                            className="w-full px-3 py-2 leading-tight text-gray-700 border rounded outline-none"
+                            value={username}
+
+                            required
+                            onChange={(e) => {
+                                setIsUserNameValid(true)
+                                setUserName(e.target.value)
+                            }}
+                            className={`w-full px-3 py-2 leading-tight text-gray-700 border rounded outline-none ${isUserNameValid ? "" : "border-red-400"}`}
                         />
+                        {
+                            !isUserNameValid && <p className="w-full p-2 text-red-600 bg-red-50">Nom d'utilisateur ne peut pas etre vide !</p>
+                        }
                     </div>
                     <div className="mb-6">
                         <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
@@ -25,16 +96,28 @@ const Login = () => {
                         <input
                             id="password"
                             type="password"
+                            value={password}
+                            onChange={(e) => {
+                                setIsPasswordValid(true)
+                                setPassWord(e.target.value)
+                            }
+                            }
                             placeholder="******************"
-                            className="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded focus:outline-none "
+
+                            required
+                            className={`w-full px-3 py-2 leading-tight text-gray-700 border rounded focus:outline-none ${isPasswordValid ? "" : "border-red-400"}`}
                         />
+                        {
+                            !isPasswordValid && <p className="w-full p-2 mb-3 text-red-600 bg-red-50">Mots de passe ne peut pas etre vide !</p>
+                        }
                     </div>
                     <div className="flex items-center justify-between">
                         <button
-                            className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none "
-                            type="button"
+                            className="flex items-center justify-center w-full gap-4 px-4 py-2 font-bold text-white transition-all duration-200 bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
+                            type="submit"
+                            onClick={handleSubmit}
                         >
-                            Connection
+                            {isLoading && <AiOutlineLoading3Quarters className="animate-spin" />} <p className="transition-all duration-200">Connection</p>
                         </button>
                     </div>
                     <div className="my-4 text-center">

@@ -6,26 +6,28 @@ import { useEffect } from 'react';
 
 const Home = () => {
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user)
+
+
     const navigate = useNavigate();
 
-   /*  useEffect(() => {
+    useEffect(() => {
         if (!user) {
             navigate('/unhautorized');
-        } else if (user.type !== "admin" && user.type !== "client") {
+        } else if (user.role !== "admin" && user.role !== "client") {
             navigate('/unhautorized');
         }
-    }, [navigate, user]);
+    }, []);
     if (!user) {
         return null;
     }
 
-    if (user.type === "admin") {
+    if (user.role === "admin") {
         return <Admin />
-    } else if (user.type === "client") {
+    } else if (user.role === "client") {
         return <Client />
-    } */
-
-    return <Admin />;
+    }
+    return null;
 }
 
 export default Home;
