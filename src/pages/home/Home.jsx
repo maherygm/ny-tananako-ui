@@ -24,7 +24,7 @@ const Home = () => {
 
     if (user.role === "admin") {
         return <Admin />
-    } else if (user.role === "client") {
+    } else if (user.role === "clients") {
         return <Client />
     }
     return null;
