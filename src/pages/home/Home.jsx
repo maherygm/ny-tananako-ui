@@ -14,7 +14,7 @@ const Home = () => {
     useEffect(() => {
         if (!user) {
             navigate('/unhautorized');
-        } else if (user.role !== "admin" && user.role !== "client") {
+        } else if (user.role !== "admin" && user.role !== "clients") {
             navigate('/unhautorized');
         }
     }, []);
