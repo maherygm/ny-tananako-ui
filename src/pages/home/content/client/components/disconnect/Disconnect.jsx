@@ -1,8 +1,8 @@
 
 import Avatar from 'react-avatar'
-import DialogsModals from '../../../../../components/ui/modals/DialogsModals'
+import DialogsModals from '../../../../../../components/ui/modals/DialogsModals'
 
-const Disconnect = ({ handleClose, open, Disconnect, Utilisateur }) => {
+const Disconnect = ({ handleClose, open, disconnect, Utilisateur }) => {
     return (
         <DialogsModals Open={open} handleClose={handleClose}>
             <div className="bg-white w-[80vw] rounded-2xl">
@@ -18,8 +18,8 @@ const Disconnect = ({ handleClose, open, Disconnect, Utilisateur }) => {
                     </button>
                     <div className="flex flex-col items-center">
                         <div className='flex gap-4 capitalize items-center  my-3 '>
-                            <Avatar name={Utilisateur.name} size={42} round={true} color="blue" />
-                            <h2 className="mb-2 text-xl font-bold text-gray-800">{Utilisateur.name}</h2>
+                            <Avatar name={Utilisateur.username} size={42} round={true} color="blue" />
+                            <h2 className="mb-2 text-xl font-bold text-gray-800">{Utilisateur.username}</h2>
                         </div>
 
                         <div className="w-full border-t border-gray-300" />
@@ -27,7 +27,7 @@ const Disconnect = ({ handleClose, open, Disconnect, Utilisateur }) => {
                             Voulez vous se deconnecter
                         </p>
                         <button
-                            onClick={Disconnect}
+                            onClick={disconnect}
                             className="px-4 py-2 mt-4 font-bold text-white bg-zinc-500 rounded-md hover:bg-zinc-600 transition-colors duration-200"
                         >
                             Déconnexion

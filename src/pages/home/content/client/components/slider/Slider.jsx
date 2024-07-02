@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import { STOPDATA } from "../../../../../utils/constants/StopData";
+import { STOPDATA } from "../../../../../../utils/constants/StopData";
 function SlideChangeHooks() {
   const [oldSlide, setOldSlide] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -50,15 +50,19 @@ function SlideChangeHooks() {
       <Slider {...settings}>
         {STOPDATA.map((el, index) => (
           <div className="outline-none rounded-3xl  overflow-hidden px-4 " key={index}>
-            <div className="bg-white rounded-3xl ">
-              <img className="w-full  h-40  rounded-3xl" src={el.imageUrl} alt={el.name} />
+            <div className="bg-white rounded-3xl overflow-hidden">
+              <div className="relative rounded-3xl">
+                <img className="w-full  h-40  rounded-3xl" src={el.imageUrl} alt={el.name} />
+                <div className="absolute rounded-3xl top-0 flex flex-col p-5 h-full w-full bg-black/30 text-white">
+                  <p className="">{el.type}</p>
+                  <p className="">Lat: {el.coordinates.lat}, Lng: {el.coordinates.lng}</p>
+                </div>
+              </div>
               <div className="text-center pb-2">
                 <h3 className="font-bold text-white">{el.name}</h3>
-                <p className="text-gray-400">{el.type}</p>
-                <p className="text-gray-400">Lat: {el.coordinates.lat}, Lng: {el.coordinates.lng}</p>
                 <div className=" flex justify-center space-x-4 px-2">
-                  <button className="px-4 py-2 text-white rounded-3xl   transition-colors duration-200 bg-blue-500  hover:bg-blue-700">Afficher le Chemin</button>
-                  <button className="px-4 py-2 text-white rounded-3xl  transition-colors duration-200 bg-green-500  hover:bg-green-700">Voir</button>
+                  <button className="px-4  text-white rounded-3xl   transition-colors duration-200 bg-blue-500  hover:bg-blue-700">Afficher le Chemin</button>
+                  <button className="px-4  text-white rounded-3xl  transition-colors duration-200 bg-green-500  hover:bg-green-700">Voir</button>
                   <button className="px-4 py-2 text-white rounded-3xl transition-colors duration-200 bg-gray-400  hover:bg-gray-500">Partager</button>
                 </div>
               </div>

@@ -18,7 +18,11 @@ const RouteConfig = () => {
                 <Route path="unhautorized" element={<UNHAUTORIZED />} />
 
                 <Route path="/" element={<MAIN />} />
-                <Route path="home" element={<HOME />} />
+                <Route path="home" element={<HOME />} >
+
+                    <Route />
+
+                </Route>
 
                 <Route path="*" element={<MAIN />} />
             </Routes>

@@ -1,25 +1,28 @@
-import { useNavigate } from "react-router-dom";
-import Client from "./content/client/Client";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { useEffect } from 'react';
+const AddArrets = () => {
 
-const Home = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user)
     const navigate = useNavigate();
 
     useEffect(() => {
         if (!user) {
             navigate('/unhautorized');
-        } else if (user.role !== "admin" && user.role !== "clients") {
+        } else if (user.role !== "admin") {
             navigate('/unhautorized');
         }
     }, []);
     if (!user) {
         return null;
     } else {
-        return <Client />
+        return (
+
+            <div>
+                Add arrets
+            </div>
+        )
     }
 }
 
-export default Home;
+export default AddArrets
