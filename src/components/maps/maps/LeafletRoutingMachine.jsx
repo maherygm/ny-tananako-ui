@@ -11,46 +11,40 @@ const LeafletRoutingMachine = ({ lat, lng }) => {
     iconSize: [25, 41],
     iconAnchor: [10, 41],
     popupAnchor: [2, -40],
-
   });
 
   useEffect(() => {
-    var marker1 = L.marker([lat, lng], { icon: DefaultIcon }).addTo(
-      map
-    );
-    /*  map.on("click", function (e) {
-       L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-       L.Routing.control({
-         waypoints: [
-           L.latLng(lat, lng),
-           L.latLng(e.latlng.lat, e.latlng.lng),
-         ],
-         lineOptions: {
-           styles: [
-             {
-               color: "blue",
-               weight: 4,
-               opacity: 0.7,
-             },
-           ],
-         },
-         routeWhileDragging: false,
-         geocoder: L.Control.Geocoder.nominatim(),
-         addWaypoints: false,
-         draggableWaypoints: false,
-         fitSelectedRoutes: false,
-         showAlternatives: false,
-         show: false
-       })
-         .on("routesfound", function (e) {
-           e.routes[0].coordinates.forEach((c, i) => {
-             setTimeout(() => {
-               marker1.setLatLng([c.lat, c.lng]);
-             }, 1000 * i);
-           });
-         })
-         .addTo(map);
-     }); */
+    var marker1 = L.marker([lat, lng], { icon: DefaultIcon }).addTo(map);
+    map.on("click", function (e) {
+      L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+      L.Routing.control({
+        waypoints: [L.latLng(lat, lng), L.latLng(e.latlng.lat, e.latlng.lng)],
+        lineOptions: {
+          styles: [
+            {
+              color: "blue",
+              weight: 4,
+              opacity: 0.7,
+            },
+          ],
+        },
+        routeWhileDragging: false,
+        geocoder: L.Control.Geocoder.nominatim(),
+        addWaypoints: false,
+        draggableWaypoints: false,
+        fitSelectedRoutes: false,
+        showAlternatives: false,
+        show: false,
+      })
+        .on("routesfound", function (e) {
+          e.routes[0].coordinates.forEach((c, i) => {
+            setTimeout(() => {
+              marker1.setLatLng([c.lat, c.lng]);
+            }, 1000 * i);
+          });
+        })
+        .addTo(map);
+    });
   }, [lat, lng]);
   return null;
 };

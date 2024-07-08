@@ -14,6 +14,9 @@ const HOME = lazy(() => import("../../pages/home/content/client/Client"))
 const _HOME_ADDARRETS = lazy(() => import("../../pages/home/content/client/contents/add/AddArrets"))
 const _HOME_EXPLORE = lazy(() => import("../../pages/home/content/client/contents/explore/Section"))
 const RouteConfig = () => {
+
+
+
     return (
         <Suspense fallback={<p className="text-center">loadings ...</p>}>
             <Routes>
@@ -22,7 +25,6 @@ const RouteConfig = () => {
                 <Route path="unhautorized" element={<UNHAUTORIZED />} />
 
                 <Route path="/" element={<MAIN />} />
-
 
                 <Route element={<RequireAuth />}>
                     <Route path="home" element={<HOME />} >
